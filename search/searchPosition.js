@@ -33,6 +33,10 @@ function searchPosition(array, target) {
     for (let i = start+1; i < array.length; i++) {
       if (array[i] === target) {
         end = i;
+        // if we check the last position, return
+        if (i === array.length - 1) {
+          return [start, end];
+        }
       } else if (array[i] !== target) {
         return [start, end];
       }
