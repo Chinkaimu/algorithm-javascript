@@ -29,6 +29,7 @@ var searchInsert = function(nums, target) {
       }
   }
   
+  // It's all >=
   if (nums[start] >= target) {
       return start;
   } else if (nums[end] >= target) {
