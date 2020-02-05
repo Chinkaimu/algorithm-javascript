@@ -60,8 +60,11 @@ function binarySearchLast (array, target) {
   return -1;
 }
 
-console.log(searchPosition([],9))
-console.log(searchPosition([0,1,1],1))
-console.log(searchPosition([1,1,1,1,2,3],1))
-console.log(searchPosition([5,7,7,8,8,8,8,10],8))
-console.log(searchPosition([5,7,7,8,8,8,8,10],11))
+// console.log(searchPosition([],9))
+// console.log(searchPosition([0,1,1],1))
+// console.log(searchPosition([1,1,1,1,2,3],1))
+// console.log(searchPosition([5,7,7,8,8,8,8,10],8))
+// console.log(searchPosition([5,7,7,8,8,8,8,10],11))
+
+
+console.log(binarySearchLast([5, 7, 7, 8, 8], 7))

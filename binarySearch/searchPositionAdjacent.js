@@ -20,6 +20,7 @@ function searchPosition(array, target) {
     /**initial value is 2*/
     mid = parseInt(start + (end - start)/2);
     if (array[mid] === target) {
+      // 找到相等的一个，第一个要么是它，要么还在前面。
       end = mid;
     } else if (array[mid] < target) {
       start = mid;

@@ -7,6 +7,8 @@ function binarySearch (array, target) {
 
   /**
    * 偶数会走到相等
+   * 与循环条件是相邻的进行比较，start 和 end 相邻时首先计算 mid 是 start 计算 start 是不是 target 然后再看 end 是不是满足条件。该算法对于找第一个和最后一个不是很合适。
+   * 所以，需要查找第一个或者最后一个位置的时候用相邻作为循环条件比较合适。
    */
   while (start <= end) {
     mid = parseInt(start + (end - start)/2)
@@ -36,3 +38,6 @@ console.log(binarySearch(arr2, 1))
 console.log(binarySearch(arr2, 9))
 console.log(binarySearch(arr2, 6))
 console.log(binarySearch(arr2, 5))
+
+console.log(binarySearch([5, 7, 7, 8, 8], 7))
+console.log(binarySearch([5, 7, 7, 7, 7, 8, 8], 7))
