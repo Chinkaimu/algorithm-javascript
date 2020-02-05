@@ -43,7 +43,7 @@ function findThePeak (nums) {
     const right = (mid === nums.length - 1) ? 0 : (mid + 1)
     if (nums[mid] < nums[left] && nums[mid] < nums[right]) {
       return mid
-    } else if (nums[mid] > nums[left]) {
+    } else if (nums[mid] > nums[left] && nums[right] > nums[mid]) {
       end = mid - 1
     } else {
       start = mid + 1

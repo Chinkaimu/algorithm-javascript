@@ -25,7 +25,7 @@ var solution = function(isBadVersion) {
     let mid
 
     while(start + 1 < end) {
-      mid = parseInt(start + (end - start)/2)
+      mid = start + Math.floor((end - start)/2)
       if (isBadVersion(mid)) {
         end = mid
       } else {

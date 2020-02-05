@@ -10,7 +10,7 @@ var findPeakElement = function(nums) {
   let mid
 
   while (start <= end) {
-    mid = parseInt(start + (end - start)/2)
+    mid = start + Math.floor((end - start)/2);
 
     if ((nums[mid] > nums[mid - 1] || !nums[mid - 1]) && (nums[mid] > nums[mid + 1] || !nums[mid+1])) {
       return mid

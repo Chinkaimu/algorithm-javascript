@@ -12,7 +12,8 @@ function binarySearch(array, target) {
   let mid;
 
   while (start + 1 < end) {
-    mid = parseInt(start + (end - start)/2);
+    // parseInt 将一个字符串 string 转换为 radix 进制的整数。取整数用　Math.floor　更合适。
+    mid = start + Math.floor((end - start)/2);
     if (array[mid] === target) {
       /** Can't stop while find the value, cause it maybe not the first position. */
       /** If we want to find the last position, we should use start here. */

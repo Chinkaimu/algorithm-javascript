@@ -34,7 +34,7 @@ var searchTarget = function (array, target) {
   var mid;
 
   while (start + 1 < end) {
-    mid = parseInt(start + (end - start)/2);
+    mid = start + Math.floor((end - start)/2);
     if (array[mid] === target) {
       return true;
     } else if (array[mid] < target) {
@@ -58,7 +58,7 @@ var searchRow = function (array, target) {
 
   // While start and end is adjacent or equal, it should break out.
   while (start + 1 < end) {
-    mid = parseInt(start + (end - start)/2);
+    mid = start + Math.floor((end - start)/2);
     if (array[mid][0] === target) {
       return true;
     } else if (array[mid][0] < target) {

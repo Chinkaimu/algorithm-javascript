@@ -33,7 +33,7 @@ function binarySearch2 (matrix, col, row, target) {
   let mid
 
   while (start + 1 < end) {
-    mid = parseInt(start + (end - start)/2)
+    mid = start + Math.floor((end - start)/2);
 
     if (matrix[mid][col] === target) {
       return mid
@@ -58,7 +58,7 @@ function binarySearch1 (array, end, target) {
   let mid
 
   while (start + 1 < end) {
-    mid = parseInt(start + (end - start)/2)
+    mid = start + Math.floor((end - start)/2);
     if (array[mid] === target) {
       return true
     } else if (array[mid] < target) {

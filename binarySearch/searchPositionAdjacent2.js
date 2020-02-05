@@ -39,7 +39,7 @@ function binarySearchLast (array, target) {
   let mid;
 
   while (start + 1 < end) {
-    mid = parseInt(start + (end - start)/2);
+    mid = start + Math.floor((end - start)/2);
     if (array[mid] === target) {
       start = mid;
     } else if (array[mid] < target) {

@@ -11,7 +11,7 @@ function binarySearch (array, target) {
    * 所以，需要查找第一个或者最后一个位置的时候用相邻作为循环条件比较合适。
    */
   while (start <= end) {
-    mid = parseInt(start + (end - start)/2)
+    mid = start + Math.floor((end - start)/2);
 
     if (array[mid] === target) {
       return mid

@@ -15,7 +15,7 @@ var searchMatrix = function(matrix, target) {
   var mid;
 
   while (start + 1 < end) {
-    mid = parseInt(start + (end - start)/2);
+    mid = start + Math.floor((end - start)/2);
     var row = getRow(mid, num);
     var col = getCol(mid, num);
 

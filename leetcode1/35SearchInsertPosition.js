@@ -17,7 +17,7 @@ var searchInsert = function(nums, target) {
   let mid;
   
   while (start + 1 < end) {
-      mid = parseInt(start + (end - start)/2);
+    mid = start + Math.floor((end - start)/2);
       
       if (nums[mid] === target) {
           return mid;
