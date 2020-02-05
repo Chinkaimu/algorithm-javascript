@@ -11,7 +11,7 @@ function binarySearch(array, target) {
   let end = array.length - 1;
   let mid;
 
-  while (start+1 < end) {
+  while (start + 1 < end) {
     mid = parseInt(start + (end - start)/2);
     if (array[mid] === target) {
       /** Can't stop while find the value, cause it maybe not the first position. */
