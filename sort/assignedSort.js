@@ -14,6 +14,7 @@ function assignedSorted(oldArray, newArray) {
 
     // 在后面插入新节点需要插入，插入节点数+1
     if (oldMountKey === -1) {
+      // 在框架中应该是记录需要进行的操作，然后对真实 DOM 进行操作
       oldArray.splice(++maxMountIndex, 0, newArray[i])
       continue
     } else {
@@ -24,7 +25,6 @@ function assignedSorted(oldArray, newArray) {
       }
       if (oldMountKey > maxMountIndex) {
         maxMountIndex = oldMountKey
-        // console.log('maxMountIndex',maxMountIndex)
       }
     }
   }
@@ -33,7 +33,6 @@ function assignedSorted(oldArray, newArray) {
   if (oldArray.length > newArray.length) {
     for (let i = 0 ; i < oldArray.length; i++) {
       // 不存在节点删除
-      // console.log('old', oldArray)
       if (getKeyFromAnother(oldArray[i], newArray) === -1) {
         oldArray.splice(i,1)
       }
