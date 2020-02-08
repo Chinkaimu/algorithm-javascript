@@ -21,7 +21,7 @@ function extend(result, target, nums, pos) {
   for (let i = pos; i < nums.length; i++) {
     target.push(nums[i])
     extend(result, target, nums, i + 1)
-    // 回溯
+    // 回溯：递归之前做了什么事情，就把这个事情恢复
     target.pop()
   }
   
