@@ -4,58 +4,90 @@
  * @return {number}
  */
 var search = function(nums, target) {
-  const peak = findThePeak(nums)
-  const moveNums = nums.length - 1 - findThePeak(nums)
-  
   let start = 0
   let end = nums.length - 1
   let mid
-  let actualMid
 
-  while (start <= end) {
-    mid = parseInt(start + (end - start)/2)
-    actualMid = (mid < moveNums) ? (mid + peak + 1) : (mid + peak + 1 - nums.length)
-    if (nums[actualMid] === target) {
-      return actualMid
-    } else if (nums[actualMid] < target){
-      start = mid + 1
-    } else {
-      end = mid - 1
+  // 至少 2 个数才会进入这个循环
+  while (start + 1 < end) {
+    mid = start + Math.floor((end - start)/2)
+
+    if (nums[mid] === target) {
+      return mid
     }
+    
+    if (nums[mid] > nums[start]) {
+      // nums[mid] > nums[start] && nums[mid] < nums[end]
+      if (nums[mid] < nums[end]) {
+        return binarySearch(nums, target, start, end)
+        // nums[mid] > nums[start] && nums[mid] > nums[end]
+      } else {
+        if (nums[mid] > target && nums[start] <= target) {
+          end = mid
+        } else {
+          start = mid
+        }
+      }
+    } else {
+       // nums[mid] < nums[start] && nums[mid] < num[mid - 1]
+      if (nums[mid] < nums[mid - 1]) {
+        // 去左边
+        if (nums[end] < target) {
+          end = mid
+        } else {
+          start = mid
+        }
+      // nums[mid] < nums[start] && nums[mid] > num[mid - 1]
+      } else {
+        if (nums[mid] < target && nums[end] >= target) {
+          start = mid
+        } else {
+          end = mid
+        }
+      }
+    }
+  }
+
+  if (nums[start] === target) {
+    return start
+  }
+
+  if (nums[end] === target) {
+    return end
   }
 
   return -1
 };
 
-/**
- * 找到任意一个驼峰的方法需要修改为找唯一的驼峰，需要对两头的比较做处理
- * @param {} nums 
- */
-function findThePeak (nums) {
-  if (!nums && !nums.length) return -1
-  let start = 0
-  let end = nums.length - 1
+function binarySearch (nums, target, start, end) {
   let mid
+  while (start + 1 < end) {
+    mid = start + Math.floor((end - start)/2)
 
-  while (start <= end) {
-    mid = parseInt(start + (end - start)/2)
-    const left = (mid === 0) ? (nums.length - 1) : (mid - 1)
-    const right = (mid === nums.length - 1) ? 0 : (mid + 1)
-    if (nums[mid] < nums[left] && nums[mid] < nums[right]) {
+    if (nums[mid] === target) {
       return mid
-    } else if (nums[mid] > nums[left] && nums[right] > nums[mid]) {
-      end = mid - 1
+    } else if (nums[mid] < target) {
+      start = mid
     } else {
-      start = mid + 1
+      end = mid
     }
+  }
+
+  if (nums[start] === target) {
+    return start
+  }
+
+  if (nums[end] === target) {
+    return end
   }
 
   return -1
 }
 
-
-// console.log(search([3,4,5,6,1,2], 2))
-// console.log(search([4,5,6,7,0,1,2], 0))
-// console.log(search([6,7,1,2,3,4,5], 6))
-
-console.log(findThePeak([6,7,1,2,3,4,5]))
+console.log(search([0, 1, 2, 3, 4], 2))
+console.log(search([4,5,6,7,0,1,2], 0))
+console.log(search([4,5,6,7,0,1,2], 3))
+console.log(search([5,1,3], 5))
+console.log(search([6,7,1,2,3,4,5], 6))
+console.log(search([5,1,2,3,4], 1))
+console.log(search([5,1,2,3,4], 4))
