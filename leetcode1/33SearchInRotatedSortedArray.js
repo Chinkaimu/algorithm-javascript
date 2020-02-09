@@ -18,32 +18,16 @@ var search = function(nums, target) {
     
     if (nums[mid] > nums[start]) {
       // nums[mid] > nums[start] && nums[mid] < nums[end]
-      if (nums[mid] < nums[end]) {
-        return binarySearch(nums, target, start, end)
-        // nums[mid] > nums[start] && nums[mid] > nums[end]
+      if (nums[mid] > target && nums[start] <= target) {
+        end = mid
       } else {
-        if (nums[mid] > target && nums[start] <= target) {
-          end = mid
-        } else {
-          start = mid
-        }
+        start = mid
       }
     } else {
-       // nums[mid] < nums[start] && nums[mid] < num[mid - 1]
-      if (nums[mid] < nums[mid - 1]) {
-        // 去左边
-        if (nums[end] < target) {
-          end = mid
-        } else {
-          start = mid
-        }
-      // nums[mid] < nums[start] && nums[mid] > num[mid - 1]
+      if (nums[mid] < target && nums[end] >= target) {
+        start = mid
       } else {
-        if (nums[mid] < target && nums[end] >= target) {
-          start = mid
-        } else {
-          end = mid
-        }
+        end = mid
       }
     }
   }
@@ -58,31 +42,6 @@ var search = function(nums, target) {
 
   return -1
 };
-
-function binarySearch (nums, target, start, end) {
-  let mid
-  while (start + 1 < end) {
-    mid = start + Math.floor((end - start)/2)
-
-    if (nums[mid] === target) {
-      return mid
-    } else if (nums[mid] < target) {
-      start = mid
-    } else {
-      end = mid
-    }
-  }
-
-  if (nums[start] === target) {
-    return start
-  }
-
-  if (nums[end] === target) {
-    return end
-  }
-
-  return -1
-}
 
 console.log(search([0, 1, 2, 3, 4], 2))
 console.log(search([4,5,6,7,0,1,2], 0))
