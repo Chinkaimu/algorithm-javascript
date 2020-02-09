@@ -1,4 +1,5 @@
 /**
+ * 核心思想：有升续就有峰
  * @param {number[]} nums
  * @return {number}
  */
