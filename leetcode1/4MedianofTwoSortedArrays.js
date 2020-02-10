@@ -42,7 +42,6 @@ function findKth (A_array, A_start, B_array, B_start, k) {
   } else {
     return findKth(A_array, A_start, B_array, B_start + mount, k - mount)
   }
-  
 }
 
 console.log(findMedianSortedArrays([1, 3], [2]))
