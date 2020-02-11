@@ -5,6 +5,7 @@
 var reverseString = function(s) {
   let flag = false
   if (!Array.isArray(s)) {
+    // s = [...s] is working too. String has [Symbol.iterator] interface.
     s = s.split('')
     flag = true
   }
