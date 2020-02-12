@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/binary-tree-preorder-traversal/
 /**
+ * 思路：通过 stack 存放需要回溯的节点，左侧分支走完以后将回溯点 push 出来
  * Definition for a binary tree node.
  * function TreeNode(val) {
  *     this.val = val;
