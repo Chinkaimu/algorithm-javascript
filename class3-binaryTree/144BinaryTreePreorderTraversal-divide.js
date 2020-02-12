@@ -27,6 +27,7 @@ root.right = next2
 var preorderTraversal = function(root) {
   const result = []
 
+  // 叶子节点返回结果使用
   if (root === null) {
     return result
   }
