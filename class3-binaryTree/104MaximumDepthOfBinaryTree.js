@@ -35,6 +35,7 @@ var maxDepth = function(root) {
   const leftDepth = maxDepth(root.left)
   const rightDepth = maxDepth(root.right)
   depth = (leftDepth > rightDepth ? leftDepth : rightDepth) + 1
+  // depth = Math.max(leftDepth, rightDepth) + 1
 
   return depth
 };
