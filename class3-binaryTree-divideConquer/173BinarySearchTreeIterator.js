@@ -1,4 +1,5 @@
 /**
+ * https://leetcode.com/problems/binary-search-tree-iterator/
  * Definition for a binary tree node.
  * function TreeNode(val) {
  *     this.val = val;
@@ -9,16 +10,16 @@
  * @param {TreeNode} root
  */
 var BSTIterator = function(root) {
-  const current = root
+  this.stack = []
 
-  while (root.left !== null) {
-    
+  this._inOrderLeftTraversal = function (node) {
+    while (node) {
+      this.stack.push(node)
+      node = node.left
+    }
   }
 
-  return {
-    current,
-    root
-  }
+  this._inOrderLeftTraversal(root)
 };
 
 /**
@@ -26,7 +27,13 @@ var BSTIterator = function(root) {
  * @return {number}
  */
 BSTIterator.prototype.next = function() {
-  
+  if (this.stack.length === 0) {
+    return undefined
+  }
+
+  const current = this.stack.pop()
+  this._inOrderLeftTraversal(current.right)
+  return current.val
 };
 
 /**
@@ -34,7 +41,7 @@ BSTIterator.prototype.next = function() {
  * @return {boolean}
  */
 BSTIterator.prototype.hasNext = function() {
-
+  return this.stack.length > 0
 };
 
 /** 
