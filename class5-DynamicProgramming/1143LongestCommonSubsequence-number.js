@@ -8,7 +8,7 @@
 var longestCommonSubsequence = function(text1, text2) {
   if (!text1 || !text1.length || !text2 || !text2.length) return 0
 
-  // state
+  // state: 2 个文本在 1 个长度时多少匹配，2个长度时多少匹配。
   let result = [[]]
   // initialize
   for (let i = 0; i <= text1.length; i++) {
@@ -27,6 +27,7 @@ var longestCommonSubsequence = function(text1, text2) {
       if (text1[i - 1] === text2[j - 1]) {
         result[i][j] = result[i - 1][j - 1] + 1
       } else {
+        // 可能存在 text1[i - 1] === text2[j] 和 text1[i] === text2[j - 1] 的情况。这样的话会相差一个长度。
         result[i][j] = Math.max(result[i - 1][j], result[i][j - 1])
       }
     }
