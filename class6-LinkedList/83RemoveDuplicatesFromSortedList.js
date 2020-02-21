@@ -10,6 +10,23 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
+var deleteDuplicatesImproved = function(head) { 
+  if (!head || !head.next) return head
+
+  let node = head
+
+  while (node.next !== null) {
+    if (node.val === node.next.val ) {
+      node.next = node.next.next
+    } else {
+      node = node.next
+    }
+  }
+
+  return head
+}
+
 var deleteDuplicates = function(head) {
   if (!head || !head.next) return head
 
