@@ -1,4 +1,5 @@
 /**
+ * https://leetcode.com/problems/sort-list/
  * Definition for singly-linked list.
  * function ListNode(val) {
  *     this.val = val;
@@ -31,6 +32,18 @@ var sortList = function(head) {
 }
 
 function findPivot(head) {
+  let faster = head.next
+  let slower = head
+
+  while (faster && faster.next) {
+    slower = slower.next
+    faster = faster.next.next
+  }
+  // 要使得 left 的结尾为 pivot，这样能够将其尾巴设置为 null
+  return slower
+}
+
+function findPivot1(head) {
   let faster = head
   let slower = new ListNode(0)
   slower.next = head
