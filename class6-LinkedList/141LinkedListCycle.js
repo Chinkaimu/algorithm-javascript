@@ -28,3 +28,20 @@ var hasCycle = function(head) {
     slower = slower.next
   }
 };
+
+var hasCycle1 = function(head) {
+  if (!head) return false
+  let slower = head
+  let faster = head.next
+
+  while (slower !== faster) {
+    if (faster === null || faster.next === null) {
+      return false
+    }
+
+    faster = faster.next.next
+    slower = slower.next
+  }
+
+  return true
+};
