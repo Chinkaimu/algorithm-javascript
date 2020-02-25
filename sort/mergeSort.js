@@ -2,18 +2,20 @@ const mergeSort = function (arr) {
   let temp = new Array(arr.length)
 
   sortHelper(arr, 0, arr.length - 1, temp)
+  return arr
 }
 
 function sortHelper (arr, left, right, temp) {
   if (left < right) {
     let mid = Math.floor((left + right)/2)
+    // 拆分
     sortHelper(arr, left, mid, temp)
     sortHelper(arr, mid + 1, right, temp)
     mergeHelper(arr, left, mid, right, temp)
   }
 }
 
-function mergeSort (arr, left, mid, right, temp) {
+function mergeHelper (arr, left, mid, right, temp) {
   let i = left // 做序列指针
   let j = mid + 1 // 右序列指针
   let t = 0 // 临时数组指针
@@ -38,3 +40,5 @@ function mergeSort (arr, left, mid, right, temp) {
     arr[left++] = temp[t++]
   }
 }
+
+console.log(mergeSort([6, 5, 4, 3, 9]))
