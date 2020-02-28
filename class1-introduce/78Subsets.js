@@ -9,7 +9,8 @@ var subsets = function(nums) {
 };
 
 /**
- * 
+ * 【宽度优先搜索】
+ * https://leetcode.com/problems/subsets/
  * @param {*} result 最终数组
  * @param {*} target 需要加入到结果中的数组，初始值是 []，每次在上一次的基础上进行增加，只能增加后面的数值
  * @param {*} nums 原数组
