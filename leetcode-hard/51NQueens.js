@@ -10,7 +10,6 @@ var solveNQueens = function(n) {
   dfs([], undefined)
 
   function dfs(current) {
-
     if (current.length === n) {
       let stringArray = []
       for (let i of current) {

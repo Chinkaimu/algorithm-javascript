@@ -4,7 +4,51 @@
  * @return {string[][]}
  */
 var partition = function(s) {
-  const palindromes = isPalindrome(s)
+  const palindromes = getPalindrome(s)
+  const result = []
+
+  dfs([], 0)
+
+  // 省略 originData, results
+  function dfs(current, pos) {
+    if (pos === s.length) {
+      result.push(current)
+      return
+    }
+
+    let substr = ""
+    for (let i = pos; i < s.length; i++) {
+      substr += s.charAt(i)
+
+      if (palindromes[pos][i]) {
+        dfs([...current, substr], i + 1)
+      }
+    }
+  }
+
+  return result
+}
+
+function getPalindrome(s) {
+  const palindromes = []
+  for (let i = 0; i < s.length; i++) {
+    palindromes[i] = []
+    palindromes[i][i] = true
+  }
+
+  // 重点： 外层循环需要是 step
+  for (let step = 1; step < s.length; step++) {
+    for (let j = 0; j < s.length; j++) {
+      if ((j + step) < s.length) {
+        palindromes[j][j + step] = s[j] === s[j + step] && (step === 1 ? true : palindromes[j + 1][j + step - 1])
+      }
+    }
+  }
+  return palindromes
+}
+
+var partition1 = function(s) {
+  const palindromes = getPalindrome(s)
   const result = []
   const n = s.length - 1
 
@@ -43,23 +87,5 @@ var partition = function(s) {
   return result
 };
 
-
-function isPalindrome(s) {
-  const palindromes = []
-  for (let i = 0; i < s.length; i++) {
-    palindromes[i] = []
-    palindromes[i][i] = true
-  }
-
-  // 重点： 外层循环需要是 step
-  for (let step = 1; step < s.length; step++) {
-    for (let j = 0; j < s.length; j++) {
-      if ((j + step) < s.length) {
-        palindromes[j][j + step] = s[j] === s[j + step] && (step === 1 ? true : palindromes[j + 1][j + step - 1])
-      }
-    }
-  }
-  return palindromes
-}
 
 console.log(partition('abba'))
