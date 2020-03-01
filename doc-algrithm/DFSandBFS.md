@@ -7,7 +7,7 @@
 ### 逐层组装结果到最深一层：求子集、求序列
 1. [Subsets](https://leetcode.com/problems/subsets/) 每个节点路径都是结果：第一层只有 0 个元素，逐层从给定的数组中取出元素添加，每个节点都作为结果添加到数组中，直到根节点。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class1-introduce/78Subsets.js)
 2. [Subsets II](https://leetcode.com/problems/subsets-ii/) 每个节点路径都是结果：给定结合内容排序，然后在上题 Subsets 的基础上增加筛选条件，不能同前面的元素一样。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class1-introduce/90Subsets.js)
-3. [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/) 叶子节点是结果：从第一个元素开始添加结果，如果遇到字母则进行大写字母转换，小写字母转换（同时都做，因为大写做转大写操作依然是大写，小写转小写操作依然是小写，不会有影响），然后再添加后面元素。查看[代码]()
+3. [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/) 叶子节点是结果：从第一个元素开始添加结果，如果遇到字母则进行大写字母转换，小写字母转换（同时都做，因为大写做转大写操作依然是大写，小写转小写操作依然是小写，不会有影响），然后再添加后面元素。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/leetcode-medium/46permutations.js)
 <br/>经历了一个多余复杂的代码过程，时间效率和代码都差 1 倍：
 第 1 题是每层的变化是集合中元素个数，本题变为修改的元素个树，顶层修改元素个数为 0，往下逐层增加 1。规则同第 2 题，第 2 题只能添加后面的元素，本题只能修改在前面已更改元素后面的字母。有个坑跟前面 2 题是有差别的：
   * 其实前面的分析是不对的，这里有个坑就是题目给的集合顺序，字母是从后往前修改的，所以循环需要用倒叙，只能修改上一次修改过位置的前面位置。
@@ -23,6 +23,7 @@
 * 方法2: 分割线作为节点，部分节点路径都是结果。需要关注的是结果分析，（1）只有部分节点路径是结果，筛选条件需要判断，前后分割都是回文串；（2）DFS 筛选条件：前面分割已经是回文串的才有必要继续深入搜索。（3）0 分割线问题需要单独处理。
 * 查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/131PalindromePartitioning.js)
 3. [Combination Sum](https://leetcode.com/problems/combination-sum/)：套用模板即可，不过需要注意 sum 的回溯。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/39CombinationSum.js)
+4. [Combination SumII](https://leetcode.com/problems/combination-sum-ii/submissions/): 在3题的基础上增加排序，以及筛选掉重复元素。` i !== pos && candidates[i] === candidates[i - 1]` 时候直接下一个函数。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/40CombinationSumII.js)
 
 ## DFS 分析步骤总结(先画图构建搜索树)
 1. 「解决方案」确定能否用 DFS：常见子序列、子集合、求所有解决方案用 DFS

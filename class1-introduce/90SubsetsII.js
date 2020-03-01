@@ -1,4 +1,5 @@
 /**
+ * https://leetcode.com/problems/subsets-ii/
  * @param {number[]} nums
  * @return {number[][]}
  */
@@ -13,6 +14,7 @@ function extend (result, target, nums, pos) {
   result.push([...target])
 
   for (let i = pos; i < nums.length; i++) {
+    // 只能出现一次
     if (pos != i && nums[i] === nums[i - 1]) {
       continue
     }
