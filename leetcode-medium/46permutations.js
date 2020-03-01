@@ -3,7 +3,7 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-// Breadth first search
+// Depth-First Search
 var permute = function(nums) {
   const result = []
   dfs([])
@@ -15,6 +15,7 @@ var permute = function(nums) {
 
     for (let i = 0; i < nums.length; i++) {
       if (current.indexOf(nums[i]) === -1) {
+        // 传递的参数是新数组，避免修改 current 的内容
         dfs([...current, nums[i]])
       }
     }
@@ -23,4 +24,4 @@ var permute = function(nums) {
   return result
 };
 
-console.log(permute([1,2,3,4]))
+console.log(permute([1,2,3]))

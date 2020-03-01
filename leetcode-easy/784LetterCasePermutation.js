@@ -37,3 +37,26 @@ function changeResult (char) {
 }
 
 console.log(letterCasePermutation('a1b2'))
+
+// 参考答案: Depth-First Search
+var letterCasePermutation = function(S) {
+  let result = [];
+  dfs("", 0);
+
+  // 闭包，使用函数体外的变量，减少参数传递
+  function dfs(current, i){
+      if(current.length == S.length) {
+          result.push(current);
+          return;
+      }
+      if(S.charAt(i) >= '0' && S.charAt(i) <= '9') {
+          current += S.charAt(i);
+          dfs(current, i + 1);
+      } else {
+          dfs(current + S.charAt(i).toLowerCase(), i + 1);
+          dfs(current + S.charAt(i).toUpperCase(), i + 1);
+      }
+  }
+  
+  return result;
+};

@@ -1,7 +1,9 @@
 /**
+ * https://leetcode.com/problems/n-queens/
  * @param {number} n
  * @return {string[][]}
  */
+// DFS
 var solveNQueens = function(n) {
   const result = []
 
