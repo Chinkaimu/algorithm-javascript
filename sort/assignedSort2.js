@@ -24,12 +24,14 @@ function assignedSorted(oldArray, newArray) {
     } else {
       oldArray[oldMountKey].visited = true
     
+      // 老挂载比最大挂载小
       if (oldMountKey < maxMountIndex) {
         // 从 oldMountKey 移动到 maxMountIndex
         const toRemoveItem = oldArray.splice(oldMountKey,1)
         oldArray.splice(maxMountIndex,0,toRemoveItem[0])
       }
   
+      // 老挂载比最大挂载大，则修改最大挂载为当前节点的 key
       if (oldMountKey > maxMountIndex) {
         maxMountIndex = oldMountKey
         // console.log('maxMountIndex',maxMountIndex)
