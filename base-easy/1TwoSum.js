@@ -1,4 +1,5 @@
 /**
+ * 考虑时间复杂度 O(n) 
  * @param {number[]} nums
  * @param {number} target
  * @return {number[]}
@@ -42,6 +43,7 @@ var twoSum = function(nums, target) {
           map.set(compliment, i);
       }
   }
+  map = null
 };
 
 console.log(twoSum([3,2,4], 6))
