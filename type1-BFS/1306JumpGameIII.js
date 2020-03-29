@@ -8,6 +8,7 @@
 var canReach = function(arr, start) {
   if (!arr || !arr.length) return false
 
+  // 也可以直接修改 arr 为负数，标记已经走过了
   const visited = []
   const queue = [start]
 

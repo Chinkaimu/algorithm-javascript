@@ -1,6 +1,7 @@
 # BFS 
 
 ## 主要思想
+  * 先将问题构建成树或者图
   * 借助队列一层一层搜索
 
 ## 使用场景
@@ -38,4 +39,6 @@ function bfs (root) {
 }
 ```
 
-## 案例
+## LeetCode 实例
+  * 1306 Jump Game III，在上述 base BFS 基础上增加是否已访问的判断
+  * 1162 As Far From Land As Possible ，0 步，1 步一层层往下寻找
