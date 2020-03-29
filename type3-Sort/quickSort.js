@@ -10,11 +10,11 @@ function quickSort (nums, start = 0, end = nums.length - 1) {
   // 4. 循环条件： i、j 相等或相交，相等的时候是刚好到 pivot。相交的时候，i 以下的都是小于中间值的，j 以上都是大于中间值的。相等
   while (i <= j) {
     // 找到大于 pivot 的值
-    while(nums[i] < pivot) {
+    while(nums[i] > pivot) {
       i++
     }
     // 找到小于 pivot 的值
-    while(nums[j] > pivot) {
+    while(nums[j] < pivot) {
       j--
     }
 
@@ -41,6 +41,6 @@ function quickSort (nums, start = 0, end = nums.length - 1) {
   // return nums
 }
 
-const nums = [2, 5, 8, 5, 1, 8]
+const nums = [3, 2, 1, 5, 6, 4]
 console.log('quickSort', quickSort(nums))
 console.log('nums', nums)
