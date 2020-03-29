@@ -60,7 +60,7 @@
         current.push(originData[i])
         dfs(current)
         current.pop()
-        // 避免回溯的简单写法如下
+        // 避免 pop 回溯的简单写法如下
         // dfs([...current, originData[i]])
       }
     }

@@ -1,5 +1,27 @@
-// eslint-disable-next-line no-unused-vars
-function bfs (root) {
+// 将数据按层次插入到队列
+function bfs1 (root) {
+  if (!root) {
+    return []
+  }
+  const results = []
+  const queue = [root]
+
+  while (queue.length > 0) {
+    const node = queue.shift()
+    results.push(node.val)
+
+    if (node.left) {
+      queue.push(node.left)
+    }
+    if (node.right) {
+      queue.push(node.right)
+    }
+  }
+  return results
+}
+
+// 如果需要分层打印则需要加一个数组存储当前层次的内容
+function bfs2 (root) {
   if (!root) {
     return []
   }
@@ -8,53 +30,19 @@ function bfs (root) {
   let queue = [root]
 
   while (queue.length > 0) {
-    const nextLevelValues = []
+    const currentLevel = []
     const size = queue.length
 
     for (let i = 0; i < size; i++) {
       const node = queue.shift()
-      node.left && nextLevelValues.push(node.left)
-      node.right && nextLevelValues.push(node.right)
-
-      results.push(node.val)
+      currentLevel.push(node.val)
+      node.left && queue.push(node.left)
+      node.right && queue.push(node.right)
     }
-    queue = nextLevelValues
+    
+    results.push(currentLevel)
   }
 
-  return results
-}
-
-function bfs2 (root) {
-  if (!root) {
-    return []
-  }
-  // 0. 存储结果
-  const results = []
-  // 1. 队列存储需要读取的数据
-  const queue = [root]
-  // 2. 记录接下来需要遍历层次的节点个数
-  let nexValueCount = queue.length
-
-  while (queue.length > 0) {
-    // 3. 临时变量记录下当前层的个数，因为下一层的个数需要重置了
-    let currentLevelCount = nexValueCount
-    nexValueCount = 0
-
-    while (currentLevelCount > 0) {
-      const node = queue.shift()
-      results.push(node.val)
-
-      if (node.left) {
-        queue.push(node.left)
-        nexValueCount++
-      }
-      if (node.right) {
-        queue.push(node.right)
-        nexValueCount++
-      }
-      currentLevelCount--
-    }
-  }
   return results
 }
 
@@ -75,4 +63,5 @@ node1.right = node3
 node3.left = node4
 node3.right = node5
 
+console.log(bfs1(node1))
 console.log(bfs2(node1))
