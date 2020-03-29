@@ -19,7 +19,7 @@ function quickSort (nums, start = 0, end = nums.length - 1) {
     }
 
     // 5. 交换条件：i <= j，满足则交换数据
-    // 走到中间 i j 相等，然后分别前后移步的，则 pivot 不会计入下一次排序
+    // TODO:走到中间 i j 相等，然后分别前后移步的，则 pivot 不会计入下一次排序
     if (i <= j) {
       // 交换位置
       i !== j && ([nums[i], nums[j]] = [nums[j], nums[i]])
@@ -28,7 +28,7 @@ function quickSort (nums, start = 0, end = nums.length - 1) {
       j--
     }
 
-    // 如果交换只在 i < j 情况， i === j 时将 i++ 则会将 pivot 放入左侧进行排序
+    // TODO:如果交换只在 i < j 情况， i === j 时将 i++ 则会将 pivot 放入左侧进行排序
   }
 
 
