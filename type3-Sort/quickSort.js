@@ -9,38 +9,41 @@ function quickSort (nums, start = 0, end = nums.length - 1) {
   const pivot = nums[Math.floor(i + (j - i)/2)]
   // 4. 循环条件： i、j 相等或相交，相等的时候是刚好到 pivot。相交的时候，i 以下的都是小于中间值的，j 以上都是大于中间值的。相等
   while (i <= j) {
-    // 找到大于 pivot 的值
+    // 找到大于或等于 pivot 的值
     while(nums[i] > pivot) {
       i++
     }
-    // 找到小于 pivot 的值
+    // 找到小于或等于 pivot 的值
     while(nums[j] < pivot) {
       j--
     }
 
-    // 5. 交换条件：i < j，满足则交换数据
-    if (i < j) {
+    // 5. 交换条件：i <= j，满足则交换数据
+    // 走到中间 i j 相等，然后分别前后移步的，则 pivot 不会计入下一次排序
+    if (i <= j) {
       // 交换位置
-      [nums[i], nums[j]] = [nums[j], nums[i]]
+      i !== j && ([nums[i], nums[j]] = [nums[j], nums[i]])
       // TODO: 这个不能忘记交换以后要继续往前走
       i++
       j--
-      // 6. 刚好走到 pivot，给 i++ 跳出循环，也计算出下一轮排序的起点
-    } else if (i === j) {
-      // i + 1 以后 i > j 跳出循环
-      i++
     }
+
+    // 如果交换只在 i < j 情况， i === j 时将 i++ 则会将 pivot 放入左侧进行排序
   }
 
-  // 左边起点是 start, 中点是 j
+
+  // 左边起点是 start, 终点是 j
   quickSort(nums, start, j)
   // 左边起点是 i, 终点是 j
   quickSort(nums, i, end)
 
   // 可返回可不返回，不返回的话只是 quickSort 得不到排序后的结果
-  // return nums
+  return nums
 }
 
-const nums = [3, 2, 1, 5, 6, 4]
+const nums = [3,2,3,1,2,4,5,5,6]
 console.log('quickSort', quickSort(nums))
-console.log('nums', nums)
+console.log('quickSort', quickSort([1, 2, 3, 4, 5]))
+console.log('quickSort', quickSort([1, 1, 2, 2, 3, 3, 3, 4, 5, 6]))
+console.log('quickSort', quickSort([2, 5, 7, 8]))
+
