@@ -7,36 +7,23 @@
 var minSubArrayLen = function(s, nums) {
   if (!nums || !nums.length) return 0
 
+  let minSofar = Number.MAX_SAFE_INTEGER;
+  let slow = 0;
+  let fast = 0;
   let sum = 0;
-  for (let i = 0; i < nums.length; i++) {
-    sum += nums[i];
-  }
 
-  if (sum < s) {
-    return 0;
-  }
+  // 快指针外层循环
+  while (fast < nums.length) {
+    sum += nums[fast];
 
-  let minLength = nums.length
-  let i = 0, j = nums.length - 1; 
-  while (i < j) {
-    if (nums[i] <= nums[j]) {
-      sum -= nums[i];
-
-      if (sum < s) {
-        return minLength
-      }
-      minLength--;
-      i++;
-    } else {
-      sum -= nums[j];
-
-      if (sum < s) {
-        return minLength
-      }
-      minLength--;
-      j--;
+    // 慢指针内层循环
+    while (sum >= s) {
+      minSofar = Math.min(minSofar, fast - slow + 1);
+      sum -= nums[slow++];
     }
+
+    fast++;
   }
 
-  return minLength;
+  return minSofar === Number.MAX_SAFE_INTEGER ? 0 : minSofar;
 };
