@@ -1,4 +1,6 @@
 const mergeSort = function (arr) {
+  if (!arr || !arr.length) return ;
+
   let temp = new Array(arr.length)
 
   sortHelper(arr, 0, arr.length - 1, temp)
@@ -16,7 +18,7 @@ function sortHelper (arr, left, right, temp) {
 }
 
 function mergeHelper (arr, left, mid, right, temp) {
-  let i = left // 做序列指针
+  let i = left // 左序列指针
   let j = mid + 1 // 右序列指针
   let t = 0 // 临时数组指针
 
@@ -40,5 +42,8 @@ function mergeHelper (arr, left, mid, right, temp) {
     arr[left++] = temp[t++]
   }
 }
-
+console.log(mergeSort([]))
+console.log(mergeSort([1]))
 console.log(mergeSort([6, 5, 4, 3, 9]))
+console.log(mergeSort([6, 5, 4, 3, 2, 1]))
+console.log(mergeSort([7, 6, 5, 4, 3, 2, 1]))

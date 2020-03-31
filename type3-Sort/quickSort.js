@@ -6,7 +6,10 @@ function quickSort (nums, start = 0, end = nums.length - 1) {
   let i = start
   let j = end
   // 3. 取中间值作为分界点。
-  const pivot = nums[Math.floor(i + (j - i)/2)]
+  // const pivot = nums[Math.floor(i + (j - i)/2)]
+  // const pivot = nums[Math.floor(start + (end - start)/2)]
+  const pivot = num2[Math.floor((start + right)/2)]
+
   // 4. 循环条件： i、j 相等或相交，相等的时候是刚好到 pivot。相交的时候，i 以下的都是小于中间值的，j 以上都是大于中间值的。相等
   while (i <= j) {
     // 找到大于或等于 pivot 的值
