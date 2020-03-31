@@ -1,7 +1,7 @@
 /**
  * 冒泡排序：
  *   【内循环】每次冒泡找到最大（升序最小）的数往前走；
- *   【外循环】需要找 arr.length 次
+ *   【外循环】需要找 arr.length 次。控制往前走的最前端。
  */
 function bubbleSort (arr) {
   
