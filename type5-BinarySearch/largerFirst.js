@@ -1,5 +1,5 @@
 /**
- * 找第一个大于等于 target 的数
+ * 升序序列，找第一个大于等于 target 的数
  */
 function binarySearch (sums, target) {
   let start = 0;
