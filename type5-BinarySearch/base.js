@@ -9,7 +9,7 @@ function binarySearch (arr, target) {
 
   // 如果用小于等于的话可能相交也可能相等。让他们在相邻的位置退出循环。
   // 相邻的 start，end 没有机会计算 pivot 然后与 target 进行比较。
-  while (start < end) {
+  while (start + 1 < end) {
     pivot = Math.floor((end - start) / 2);
 
     if (arr[pivot] === target) {
