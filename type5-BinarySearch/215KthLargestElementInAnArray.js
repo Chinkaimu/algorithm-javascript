@@ -3,7 +3,6 @@
  * @param {number[]} nums
  * @param {number} k
  * @return {number}
- * 时间复杂度： O(n*logK)
  */
 var findKthLargest = function(nums, k) {
   if (!nums || !nums.length) return
