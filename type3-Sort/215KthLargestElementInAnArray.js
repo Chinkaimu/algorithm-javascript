@@ -2,6 +2,7 @@
  * https://leetcode.com/problems/kth-largest-element-in-an-array/
  * @param {number} k
  * @param {*} nums 
+ * 算法复杂度： O(n) : n + n/2 + n/4 + ... + n/n = 2n - 1
  */
 var findKthLargest = function(nums, k) {
   if (k > nums.length) return;
