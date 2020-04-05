@@ -37,5 +37,7 @@
 
 ## leetcode 例子
 * OneSequence
-  * [easy][55JumpGame](https://leetcode.com/problems/jump-game/submissions/) canReach[i] 表示 i 位置是否能到达（满足 2，求是否）。
-  * [45JumpGameII](https://leetcode.com/problems/jump-game-ii/) minSteps[i] 表示能够最小到达的步数（满足 1，求最小值）。
+  * [55JumpGame](https://leetcode.com/problems/jump-game/submissions/) canReach[i] 表示 i 位置是否能到达（满足 2，求是否）,通过前面是否存在 j + nums[i] >= i 判断该值是否为 true。
+  * [45JumpGameII](https://leetcode.com/problems/jump-game-ii/) minSteps[i] 表示能够最小到达的步数（满足 1，求最小值）, 通过能达到 i 的 j 点的最小步数 minSteps[j] + 1 得到 nums[i]。
+* Matrix
+  * [62UniquePath](https://leetcode.com/problems/unique-paths/) paths[i][j] 表示能到达[i,j]的路径数目（满足 3，求个数）, paths[i][j] = paths[i - 1][j] + paths[i][j - 1]。
