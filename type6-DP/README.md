@@ -31,15 +31,36 @@
 * 答案
 * 注意点：很多时候我们需要增加条件尽快跳出循环，以降低时间复杂度避免超时
 
+## 参考模板代码
+```
+  var jump = function(nums) {
+    // 定义和初始化
+    result = [0];
+
+    // 外循环，长度
+    for (let i = 1; i < nums.length; i++) {
+      for (let j = 0; j < i; j++) {
+        // 方程：i 位置的结果通过前面 j 位置经过 f 计算得到
+        result[i] = f(result[j])
+      }
+    }
+
+    // 结果
+    return result[nums.length - 1];
+  }
+```
+
 ## 与贪心算法比较
 * DP 是后决策，贪心算法是先决策
-* DP 超时的话，可以考虑用贪心算法解决
+* DP 超时的话，可以考虑用贪心算法解决。例如 [55JumpGame](https://leetcode.com/problems/jump-game/submissions/)，[45JumpGameII](https://leetcode.com/problems/jump-game-ii/)
 
 ## leetcode 例子
 * OneSequence
-  * [55JumpGame](https://leetcode.com/problems/jump-game/submissions/) canReach[i] 表示 i 位置是否能到达（满足 2，求是否）,通过前面是否存在 j + nums[i] >= i 判断该值是否为 true。
-  * [45JumpGameII](https://leetcode.com/problems/jump-game-ii/) minSteps[i] 表示能够最小到达的步数（满足 1，求最小值）, 通过能达到 i 的 j 点的最小步数 minSteps[j] + 1 得到 nums[i]。
-  * [70ClimbingStairs](https://leetcode.com/problems/climbing-stairs/) ways[i] 表示到达 i 步可以有的方式（满足条件3，求个数），ways[i] 是 ways[i - 1] 一步上来 或者 ways[i - 2] 跨 2 步上来。只用到前 2 步的数据，所以可以不用数组，用 2 个变量保存即可。
+  * [55JumpGame](https://leetcode.com/problems/jump-game/submissions/) canReach[i] 表示 i 位置是否能到达（定义，满足 2，求是否）, canReach[i] = true（方程）, 如果通过前面是否存在，即 j + nums[j] >= i。
+  * [45JumpGameII](https://leetcode.com/problems/jump-game-ii/) minSteps[i] 表示能够最小到达的步数（定义，满足 1，求最小值）, nums[i] = nums[j] + 1（方程）, 如果通过能达到 j 的 i 点，即 j + nums[j] > i。
+  * [132PalindromePartitioningII](https://leetcode.com/problems/palindrome-partitioning-ii/) p[i] 表示 i 位置最少个数的回文串，分割数是 p[i] - 1（定义，满足 1，求最小值）。p[i] = p[j] + 1（方程）, 如果 （j + 1） -> i 是回文串。注意：这里判断回文串还可以增加一个 matrix DP。
+  * [70ClimbingStairs](https://leetcode.com/problems/climbing-stairs/) ways[i] 表示到达 i 步可以有的方式（定义，满足条件3，求个数），ways[i] = ways[i - 2] + ways[i - 1] (方程)，即 ways[i] 是 ways[i - 1] 一步上来 或者 ways[i - 2] 跨 2 步上来。只用到前 2 步的数据，所以可以不用数组，用 2 个变量保存即可。
+  * [300LongestIncreasingSubsequence](https://leetcode.com/problems/longest-increasing-subsequence/submissions/) lens[i] 表示 i 位置最长的增长子序列， lens[i] = nums[j] + 1， 如果前面找到 j 使得 nums[j] < nums[i]。方程思想同 45 等，maxLen 记录最大值，用于输出。这一点同下面的 120。
 * Matrix
   * [62UniquePaths](https://leetcode.com/problems/unique-paths/) paths[i][j] 表示能到达[i,j]的路径数目（满足 3，求个数）, paths[i][j] = paths[i - 1][j] + paths[i][j - 1]，与 70 同理，有 2 条路可以过来，每条路算作 1。
   * [63UniquePaths](https://leetcode.com/problems/unique-paths-ii/) 在 62 的基础上增加了障碍，那么求值的方程需要做一个判断是否能到达。
