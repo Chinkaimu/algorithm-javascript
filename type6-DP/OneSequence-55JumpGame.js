@@ -4,28 +4,11 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-// 不要双重循环
-var canJump = function(nums) {
-  let farest = nums[0];
+// 不要双重循环 --- Greedy，参考 greddy 部分
 
-  let i = 0;
-  // 没有超过可到达最远地址，就可以继续往下走。
-  while (i <= farest) {
-    if (farest >= nums.length - 1) {
-      return true;
-    }
-
-    farest = Math.max(nums[i] + i, farest);
-    i++;
-  }
-
-  // 加减法优先级高于比较运算符，但是加个括号更清晰
-  return farest >= (nums.length - 1) ? true : false;
-}
-
-
- // 双重循环增加跳出条件，减少循环次数
-var canJump2 = function(nums) {
+// 双重循环：前面能够到达的点，主动推导出后面能到达的点。
+// 能更快地到达终点，并不需要所有数据进行计算
+ var canJump = function(nums) {
   // 定义 + 初始化，canReach 能到达的点
   const canReach = [true];
 
@@ -44,21 +27,20 @@ var canJump2 = function(nums) {
   return false;
 };
 
-console.log(canJump([0]))
-
-// 双重循环
+// 双重循环：后面的结果由前面结果推导
 var canJump1 = function(nums) {
-  // 定义 + 初始化，canReach 能到达的点
   const canReach = [true];
 
-  for (let i = 0; i < nums.length; i++) {
-    if (canReach[i]) {
-      for (let j = 1; j <= nums[i]; j++) {
-        canReach[i + j] = true;
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (canReach[j] && (nums[j] + j >= i)) {
+        canReach[i] = true;
+        break;
       }
     }
   }
 
-  // TODO: canReach[nums.length - 1] 可能为 undefined ，所以要增加判断是否存在，存在且为 true 时才是 true； 否则为 false
   return canReach[nums.length - 1] ? true : false;
-};
+}
+
+console.log(canJump([0]))
