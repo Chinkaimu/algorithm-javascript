@@ -13,5 +13,26 @@
 * Two Sequences： DP
 * Backpack：背包问题
 
+## 常见算法复杂度
+* O(n^2)
+* n + n/2 + n/4 + ... + 1 = 2n - 1
+
+## DP 特点
+* 求以下类型之一
+  * 最大值或最小值
+  * 是/否
+  * 个数
+* 不可以排序或者交换
+
 ## 解题步骤
-* 
+* 状态 state 定义：通过小状态推断后续的状态
+* 方程：如果通过前面的状态计算后续的状态
+* 初始化：终点先有值/起点先有值
+* 答案
+
+## 与贪心算法比较
+* DP 是后决策，贪心算法是先决策
+
+## leetcode 例子
+* OneSequence
+  * [easy][55JumpGame](https://leetcode.com/problems/jump-game/submissions/) 求最大可到达的地方 farest，可到达的地方又不断向后推。
