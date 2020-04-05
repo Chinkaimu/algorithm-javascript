@@ -42,3 +42,4 @@
 * Matrix
   * [62UniquePaths](https://leetcode.com/problems/unique-paths/) paths[i][j] 表示能到达[i,j]的路径数目（满足 3，求个数）, paths[i][j] = paths[i - 1][j] + paths[i][j - 1]。
   * [63UniquePaths](https://leetcode.com/problems/unique-paths-ii/) 在 62 的基础上增加了障碍，那么求值的方程需要做一个判断是否能到达。
+  * [64MinimumPathSum](https://leetcode.com/problems/minimum-path-sum/) miniSum[i][j] 表示到达[i, j]路径和的最小值（满足 1，求最小值），minSum[i][j] = Math.min(minSum[i - 1][j], minSum[i][j - 1]) + value
