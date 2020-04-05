@@ -1,6 +1,7 @@
 /**
  * TODO: 0405 to repeat again
  * https://leetcode.com/problems/jump-game/
+ * 其他解法：DP
  * @param {number[]} nums
  * @return {boolean}
  */

@@ -1,6 +1,7 @@
 /**
  * https://leetcode.com/problems/longest-increasing-subsequence/
  * lens[i] 表示 i 位置最长的增长子序列， lens[i] = nums[j] + 1， 如果前面找到 j 使得 nums[j] < nums[i]。
+ * 其他解法：二分查找
  * @param {number[]} nums
  * @return {number}
  */

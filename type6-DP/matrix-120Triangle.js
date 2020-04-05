@@ -1,6 +1,7 @@
 /**
  * https://leetcode.com/problems/triangle/
  * sums[i][j] 表示到达[i, j]路径和的最小值（满足 1，求最小值），min[i][j] = Math.min(sums[i - 1][y], sums[i - 1][y - 1]) + value
+ * 其他解法： Divide&Conquer
  * @param {number[][]} triangle
  * @return {number}
  */
