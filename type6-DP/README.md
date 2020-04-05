@@ -39,7 +39,8 @@
 * OneSequence
   * [55JumpGame](https://leetcode.com/problems/jump-game/submissions/) canReach[i] 表示 i 位置是否能到达（满足 2，求是否）,通过前面是否存在 j + nums[i] >= i 判断该值是否为 true。
   * [45JumpGameII](https://leetcode.com/problems/jump-game-ii/) minSteps[i] 表示能够最小到达的步数（满足 1，求最小值）, 通过能达到 i 的 j 点的最小步数 minSteps[j] + 1 得到 nums[i]。
+  * [70ClimbingStairs](https://leetcode.com/problems/climbing-stairs/) ways[i] 表示到达 i 步可以有的方式（满足条件3，求个数），ways[i] 是 ways[i - 1] 一步上来 或者 ways[i - 2] 跨 2 步上来。只用到前 2 步的数据，所以可以不用数组，用 2 个变量保存即可。
 * Matrix
-  * [62UniquePaths](https://leetcode.com/problems/unique-paths/) paths[i][j] 表示能到达[i,j]的路径数目（满足 3，求个数）, paths[i][j] = paths[i - 1][j] + paths[i][j - 1]。
+  * [62UniquePaths](https://leetcode.com/problems/unique-paths/) paths[i][j] 表示能到达[i,j]的路径数目（满足 3，求个数）, paths[i][j] = paths[i - 1][j] + paths[i][j - 1]，与 70 同理，有 2 条路可以过来，每条路算作 1。
   * [63UniquePaths](https://leetcode.com/problems/unique-paths-ii/) 在 62 的基础上增加了障碍，那么求值的方程需要做一个判断是否能到达。
   * [64MinimumPathSum](https://leetcode.com/problems/minimum-path-sum/) miniSum[i][j] 表示到达[i, j]路径和的最小值（满足 1，求最小值），minSum[i][j] = Math.min(minSum[i - 1][j], minSum[i][j - 1]) + value

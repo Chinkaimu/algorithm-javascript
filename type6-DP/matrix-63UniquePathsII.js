@@ -41,7 +41,6 @@ var uniquePathsWithObstacles = function(obstacleGrid) {
     }
   }
 
-  console.log(paths)
   return paths[n - 1][m - 1];
 }
 

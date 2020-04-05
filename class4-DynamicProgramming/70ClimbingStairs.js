@@ -22,5 +22,5 @@ var climbStairs = function(n) {
     before1 = before2
     before2 = temp
   }
-  before2
+  return before2
 };
