@@ -19,9 +19,9 @@
 
 ## DP 特点
 * 求以下类型之一
-  * 最大值或最小值
-  * 是/否
-  * 个数
+  * 1. 最大值或最小值
+  * 2. 是/否
+  * 3. 个数
 * 不可以排序或者交换
 
 ## 解题步骤
@@ -29,10 +29,13 @@
 * 方程：如果通过前面的状态计算后续的状态
 * 初始化：终点先有值/起点先有值
 * 答案
+* 注意点：很多时候我们需要增加条件尽快跳出循环，以降低时间复杂度避免超时
 
 ## 与贪心算法比较
 * DP 是后决策，贪心算法是先决策
+* DP 超时的话，可以考虑用贪心算法解决
 
 ## leetcode 例子
 * OneSequence
-  * [easy][55JumpGame](https://leetcode.com/problems/jump-game/submissions/) 求最大可到达的地方 farest，可到达的地方又不断向后推。
+  * [easy][55JumpGame](https://leetcode.com/problems/jump-game/submissions/) canReach[i] 表示 i 位置是否能到达（满足 2，求是否）。
+  * [45JumpGameII](https://leetcode.com/problems/jump-game-ii/) minSteps[i] 表示能够最小到达的步数（满足 1，求最小值）。
