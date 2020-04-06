@@ -3,7 +3,34 @@
  * @return {void} Do not return anything, modify matrix in-place instead.
  * 思路：一圈一圈旋转
  */
-var rotate = function(matrix) {
+var rotate = function (matrix) {
+  let mLastIndex = matrix.length - 1;
+
+  for (let round = 0; round < Math.floor(matrix.length/2); round++) {
+    const lastIndex = mLastIndex - round;
+
+    for (let index = round; index < lastIndex; ++index) {
+      let temp = matrix[round][index];
+
+      // 上边，x = round 固定。
+      // 第 index 数等于左侧 从下往上第 index 数。 lastIndex - index (这里的 index 包含了 round， 减多了，加回去就是 mLastIndex)
+      matrix[round][index] = matrix[mLastIndex - index][round];
+
+      // 左侧， y = round 固定。
+      // 从下往上第 index 数，等于下边从右往左第 index 数。 
+      matrix[mLastIndex - index][round] = matrix[lastIndex][mLastIndex - index];
+
+      // 下边，y = lastIndex 固定。
+      // 从右往左第 index 数据，等于右侧从上往下第 index 数。(这里的 index 已经加上了 round)
+      matrix[lastIndex][mLastIndex - index] = matrix[index][lastIndex];
+
+      // 右边，等于存储的 temp
+      matrix[index][lastIndex] = temp;
+    }
+  }
+}
+
+var rotate1 = function(matrix) {
   let temp = null;
   let lastIndex, len;
 
@@ -53,29 +80,3 @@ const num2 = [[1,2,3],[4,5,6],[7,8,9]];
 rotate1(num2);
 console.log(num2);
 
-function rotate1 (matrix) {
-  let mLastIndex = matrix.length - 1;
-
-  for (let round = 0; round < Math.floor(matrix.length/2); round++) {
-    const lastIndex = mLastIndex - round;
-
-    for (let index = round; index < lastIndex; ++index) {
-      let temp = matrix[round][index];
-
-      // 上边，x = round 固定。
-      // 第 index 数等于左侧 从下往上第 index 数。 lastIndex - index (这里的 index 包含了 round， 减多了，加回去就是 mLastIndex)
-      matrix[round][index] = matrix[mLastIndex - index][round];
-
-      // 左侧， y = round 固定。
-      // 从下往上第 index 数，等于下边从右往左第 index 数。 
-      matrix[mLastIndex - index][round] = matrix[lastIndex][mLastIndex - index];
-
-      // 下边，y = lastIndex 固定。
-      // 从右往左第 index 数据，等于右侧从上往下第 index 数。(这里的 index 已经加上了 round)
-      matrix[lastIndex][mLastIndex - index] = matrix[index][lastIndex];
-
-      // 右边，等于存储的 temp
-      matrix[index][lastIndex] = temp;
-    }
-  }
-}
