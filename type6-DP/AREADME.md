@@ -25,10 +25,10 @@
 * 不可以排序或者交换
 
 ## 解题步骤
-* 状态 state 定义：通过小状态推断后续的状态
-* 方程：如果通过前面的状态计算后续的状态
-* 初始化：终点先有值/起点先有值
-* 答案
+* 状态 state 定义：通过小状态推断后续的状态，通常用结论数据就可以定义。
+* 方程(关键点)：通过前面的状态计算后续的状态。
+* 初始化：终点先有值/起点先有值。
+* 答案：注意可能要增加一个变量去记录最大值/最小值。
 * 注意点：很多时候我们需要增加条件尽快跳出循环，以降低时间复杂度避免超时
 
 ## 参考模板代码
@@ -68,4 +68,5 @@
   * [120Triangle](https://leetcode.com/problems/triangle/) sums[i][j] 表示到达[i, j]路径和的最小值（满足 1，求最小值），min[i][j] = Math.min(sums[i - 1][y], sums[i - 1][y - 1]) + value。需要注意的是(1) 判断节点是否存在；（2）返回值是最后一行的最小值，而不是最后一个值；（3）undefined 判断通过 === 判断，不要偷懒。其他解法：Divide&Conquer
   * [72EditDistance](https://leetcode.com/problems/edit-distance/) minEdit[x][y] 表示 word1 的 0 - (x - 1) 改为 word2 的 0 -> (y - 1) 所需要进行的最小修改。 思想不变，主要在于方程推导。考虑一下 x - 1, y - 1, x, y 的组合。需要注意的是，x, y 在 words 中坐标要减 1。
 * TwoSequences (OneSequence * 2)
-  * [1143](https://leetcode.com/problems/longest-common-subsequence/submissions/) result[x][y] 表示从 text1 的 0 - x 与 text2 的 0 - y 的最长匹配。result[x][y] = text1[x] === text2[y] ? result[x - 1][y - 1] + 1 : Math.max(result[x - 1][y], result[x][y - 1])。
+  * [1143LongestCommonSubsequence](https://leetcode.com/problems/longest-common-subsequence/submissions/) result[x][y] 表示从 text1 的 0 - x 与 text2 的 0 - y 的最长匹配。result[x][y] = text1[x] === text2[y] ? result[x - 1][y - 1] + 1 : Math.max(result[x - 1][y], result[x][y - 1])。
+  * [97InterleavingString](https://leetcode.com/problems/interleaving-string/) f[i][j] 表示 s1 的前 i 个字符和 s2 的前 j 个字符能否交替组成 s3 的前 i+j 个字符。关键点用字符个数去做坐标，以及方程的推导。S1 去匹配或者 S2 去匹配，2条路径二选一。 f[i][j] = (f[i - 1][j] && s1[i - 1] === s3[i + j - 1]) || (f[i][j - 1] && s2[j - 1] === s3[i + j - 1])。
