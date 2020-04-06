@@ -12,11 +12,11 @@ var minSubArrayLen = function(s, nums) {
   let fast = 0;
   let sum = 0;
 
-  // 快指针外层循环
+  // 快指针外层循环，快指针指向数据加到 sum
   while (fast < nums.length) {
     sum += nums[fast];
 
-    // 慢指针内层循环
+    // 慢指针内层循环，慢指针指向数据出 sum
     while (sum >= s) {
       minSofar = Math.min(minSofar, fast - slow + 1);
       sum -= nums[slow++];
