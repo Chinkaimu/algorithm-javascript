@@ -2,6 +2,7 @@
  * https://leetcode.com/problems/3sum/
  * @param {number[]} nums
  * @return {number[][]}
+ * 算法复杂度： O(n^2)
  * 将 3sum 转化成 2sum 问题。
  * 所有的负数需要对应找到 2 个数之和为正数（这个部分用双指针）
  */
