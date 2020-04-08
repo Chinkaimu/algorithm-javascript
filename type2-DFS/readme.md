@@ -18,6 +18,7 @@
 教训：只管变化的内容就好，不变化的内容传来传去费劲儿。
 
 4. [Permutations](https://leetcode.com/problems/permutations/) 叶子节点是结果：每一层在上一层的基础上增加一个前面没有使用过的元素。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/tree/master/leetcode-medium)
+5. [112. Path Sum](https://leetcode.com/problems/path-sum/) 另外解法：Divide&Conquer
 
 ### 找所有可能的解决方案
 1. [N-Queens](https://leetcode.com/problems/n-queens/) 叶子节点是结果：下一个节点需要考虑前面的节点没有在冲突位置。挑战点：斜角的冲突位置计算，可以通过横纵坐标差或者和来判断，因为 [x - minus, y - minus] 以及 [x + minus, y - minus] 的两种位置会与当前要存放的 [x,y] 节点冲突。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/tree/master/leetcode-hard)

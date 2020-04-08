@@ -15,7 +15,7 @@ function binarySearch (arr, target) {
     if (target > arr[mid]) {
       start = mid;
     } else {
-      // target < arr[mid], 一定在左边
+      // target <= arr[mid], 一定在左边
       end = mid;
     }
   }
