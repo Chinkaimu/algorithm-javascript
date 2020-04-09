@@ -9,6 +9,14 @@ function TreeNode (val) {
   this.left = this.right = null;
 }
 
+function getNodeFromArray (arr) {
+  // val maybe null or undefined (maybe there is only one item left in array in last loop)
+  const val = arr.shift();
+  const node = val ? new TreeNode(val) : null;
+
+  return node;
+}
+
 function buildTree (arr) {
   if (!arr || !arr.length ) return null;
 
@@ -33,12 +41,4 @@ function buildTree (arr) {
   return root;
 }
 
-function getNodeFromArray (arr) {
-  // val maybe null or undefined (maybe there is only one item left in array in last loop)
-  const val = arr.shift();
-  const node = val ? new TreeNode(val) : null;
-
-  return node;
-}
-
-console.log(buildTree([10,5,-3,3,2,null,11,3,-2,null,1]))
+module.exports = buildTree;
