@@ -20,7 +20,9 @@ const pathSum = (root, sum) => {
   let curNode;
   while (queue.length > 0) {
     curNode = queue.shift();
-    paths += dfs(root, sum, 0, 0);
+    const temp = dfs(curNode, sum, 0, 0);
+    console.log(temp);
+    paths += temp;
 
     curNode.left && queue.push(curNode.left);
     curNode.right && queue.push(curNode.right);
@@ -37,8 +39,12 @@ function dfs (root, sum, curSum, curPaths) {
     return curPaths;
   }
 
-  root.left && dfs(root.left, sum, curSum, curPaths);
-  root.right && dfs(root.right, sum, curSum, curPaths);
+  const leftPaths = root.left ? dfs(root.left, sum, curSum, curPaths) : 0;
+  const rightPaths = root.right ? dfs(root.right, sum, curSum, curPaths) : 0;
+
+  // TODO: add left paths and right paths
+  // TOFix: the common path will add twice
+  return leftPaths + rightPaths;
 }
 
 module.exports = pathSum;
