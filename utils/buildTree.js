@@ -15,30 +15,30 @@ function buildTree (arr) {
   const root = new TreeNode(arr.shift());
   const currentLevelQueue = [root];
 
-  while (currentLevelQueue.length > 0) {
+  while (currentLevelQueue.length > 0 && arr.length > 0) {
     let levelCount = currentLevelQueue.length;
 
-    while (levelCount-- > 0){
+    while (levelCount-- > 0 && arr.length > 0){
       const current = currentLevelQueue.shift();
       if (current) {
-        let val = arr.shift();
-        let node = val ? new TreeNode(val) : null;
-        current.left = node;
-        if (val !== undefined) {
-          currentLevelQueue.push(node);
-        }
+        current.left = getNodeFromArray(arr);
+        currentLevelQueue.push(current.left);
 
-        val = arr.shift();
-        node = val ? new TreeNode(val) : null;
-        current.right = node;
-        if (val !== undefined) {
-          currentLevelQueue.push(node);
-        }
+        current.right = getNodeFromArray(arr);
+        currentLevelQueue.push(current.right);
       }
     }
   }
 
   return root;
+}
+
+function getNodeFromArray (arr) {
+  // val maybe null or undefined (maybe there is only one item left in array in last loop)
+  const val = arr.shift();
+  const node = val ? new TreeNode(val) : null;
+
+  return node;
 }
 
 console.log(buildTree([10,5,-3,3,2,null,11,3,-2,null,1]))
