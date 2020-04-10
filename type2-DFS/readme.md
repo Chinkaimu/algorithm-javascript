@@ -1,6 +1,7 @@
 # 深度优先搜索（Depth-First Search）
 * 核心思想：
   * 递归一层层往下寻找结果
+  * 与 Divide&Conquer 结合(常用于 树)的时候，递归求最底部解回传到上一层节点，再一层层回传。根结果与左右结果分开思路会更加清晰。
   * 用栈进栈出的方式
 * 使用场景
   * 求子序列、求子集
@@ -8,26 +9,31 @@
 
 ## 具体例子 —— 深度优先，一直往下搜索到最终结果后返回
 ### 逐层组装结果到最深一层：求子集、求序列
-1. [Subsets](https://leetcode.com/problems/subsets/) 每个节点路径都是结果：第一层只有 0 个元素，逐层从给定的数组中取出元素添加，每个节点都作为结果添加到数组中，直到根节点。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class1-introduce/78Subsets.js)
-2. [Subsets II](https://leetcode.com/problems/subsets-ii/) 每个节点路径都是结果：给定结合内容排序，然后在上题 Subsets 的基础上增加筛选条件，不能同前面的元素一样。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class1-introduce/90Subsets.js)
-3. [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/) 叶子节点是结果：从第一个元素开始添加结果，如果遇到字母则进行大写字母转换，小写字母转换（同时都做，因为大写做转大写操作依然是大写，小写转小写操作依然是小写，不会有影响），然后再添加后面元素。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/leetcode-medium/46permutations.js)
+*  [Subsets](https://leetcode.com/problems/subsets/) 每个节点路径都是结果：第一层只有 0 个元素，逐层从给定的数组中取出元素添加，每个节点都作为结果添加到数组中，直到根节点。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class1-introduce/78Subsets.js)
+* [Subsets II](https://leetcode.com/problems/subsets-ii/) 每个节点路径都是结果：给定结合内容排序，然后在上题 Subsets 的基础上增加筛选条件，不能同前面的元素一样。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class1-introduce/90Subsets.js)
+* [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/) 叶子节点是结果：从第一个元素开始添加结果，如果遇到字母则进行大写字母转换，小写字母转换（同时都做，因为大写做转大写操作依然是大写，小写转小写操作依然是小写，不会有影响），然后再添加后面元素。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/leetcode-medium/46permutations.js)
 <br/>经历了一个多余复杂的代码过程，时间效率和代码都差 1 倍：
 第 1 题是每层的变化是集合中元素个数，本题变为修改的元素个树，顶层修改元素个数为 0，往下逐层增加 1。规则同第 2 题，第 2 题只能添加后面的元素，本题只能修改在前面已更改元素后面的字母。有个坑跟前面 2 题是有差别的：
   * 其实前面的分析是不对的，这里有个坑就是题目给的集合顺序，字母是从后往前修改的，所以循环需要用倒叙，只能修改上一次修改过位置的前面位置。
   * 数据顺序是一层一层读的，需要一层一层往上返回结果。当层的结果拿到，下一层的结果拿到，然后两者合并进行返回。
 教训：只管变化的内容就好，不变化的内容传来传去费劲儿。
 
-4. [Permutations](https://leetcode.com/problems/permutations/) 叶子节点是结果：每一层在上一层的基础上增加一个前面没有使用过的元素。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/tree/master/leetcode-medium)
-5. [112. Path Sum](https://leetcode.com/problems/path-sum/) 另外解法：Divide&Conquer
+* [Permutations](https://leetcode.com/problems/permutations/) 叶子节点是结果：每一层在上一层的基础上增加一个前面没有使用过的元素。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/tree/master/leetcode-medium)
 
 ### 找所有可能的解决方案
-1. [N-Queens](https://leetcode.com/problems/n-queens/) 叶子节点是结果：下一个节点需要考虑前面的节点没有在冲突位置。挑战点：斜角的冲突位置计算，可以通过横纵坐标差或者和来判断，因为 [x - minus, y - minus] 以及 [x + minus, y - minus] 的两种位置会与当前要存放的 [x,y] 节点冲突。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/tree/master/leetcode-hard)
-2. [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/) : 
-* 方法1: 回文串内容作为节点。
-* 方法2: 分割线作为节点，部分节点路径都是结果。需要关注的是结果分析，（1）只有部分节点路径是结果，筛选条件需要判断，前后分割都是回文串；（2）DFS 筛选条件：前面分割已经是回文串的才有必要继续深入搜索。（3）0 分割线问题需要单独处理。
+* [N-Queens](https://leetcode.com/problems/n-queens/) 叶子节点是结果：下一个节点需要考虑前面的节点没有在冲突位置。挑战点：斜角的冲突位置计算，可以通过横纵坐标差或者和来判断，因为 [x - minus, y - minus] 以及 [x + minus, y - minus] 的两种位置会与当前要存放的 [x,y] 节点冲突。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/tree/master/leetcode-hard)
+* [Palindrome Partitioning](https://leetcode.com/problems/palindrome-partitioning/) : 
+  * 方法1: 回文串内容作为节点。
+  * 方法2: 分割线作为节点，部分节点路径都是结果。需要关注的是结果分析，（1）只有部分节点路径是结果，筛选条件需要判断，前后分割都是回文串；（2）DFS 筛选条件：前面分割已经是回文串的才有必要继续深入搜索。（3）0 分割线问题需要单独处理。
 * 查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/131PalindromePartitioning.js)
-3. [Combination Sum](https://leetcode.com/problems/combination-sum/)：套用模板即可，不过需要注意 sum 的回溯。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/39CombinationSum.js)
-4. [Combination SumII](https://leetcode.com/problems/combination-sum-ii/submissions/): 在3题的基础上增加排序，以及筛选掉重复元素。` i !== pos && candidates[i] === candidates[i - 1]` 时候直接下一个函数。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/40CombinationSumII.js)
+* [Combination Sum](https://leetcode.com/problems/combination-sum/)：套用模板即可，不过需要注意 sum 的回溯。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/39CombinationSum.js)
+* [Combination SumII](https://leetcode.com/problems/combination-sum-ii/submissions/): 在3题的基础上增加排序，以及筛选掉重复元素。` i !== pos && candidates[i] === candidates[i - 1]` 时候直接下一个函数。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/40CombinationSumII.js)
+
+
+### 与分治法结合
+* [112. Path Sum](https://leetcode.com/problems/path-sum/) 结果由左右子树结果得出。
+* [427. Path SumIII](https://leetcode.com/problems/path-sum-iii/submissions/) 叶子节点结果开始回传往上到根。
+
 
 ## DFS 分析步骤总结(先画图构建搜索树)
 1. 「解决方案」确定能否用 DFS：常见子序列、子集合、求所有解决方案用 DFS
@@ -69,7 +75,27 @@
     return result
   }
 ```
+## DFS 与 Divide&Conquer 结合
+```
+  function dfs (root, condition) {
+    // 递归终止的条件，叶子节点以下开始往上层回传数据
+    if (!root) {
+      return 0;
+    }
+
+    if(root implement condition) {
+      curSum = 1;
+    }
+
+    const leftSum = dfs(root.left, condition);
+    const rightSum = dfs(root.right, condition);
+
+    // 结果合并，并往上回传。
+    return curSum + leftSum + rightSum;
+  }
+```
 
 ## 可能挑战点分析
 * 节点分析，节点可能需要通过现象看本质，不单单是简单给的数字，例如回文串分割节点是分割线
 * 节点间演算条件，要考虑充分，避免遗漏，例如 N 皇后问题斜角也不能放置，这里的斜角代码还有点小技巧
+* 与分治法结合时，一定要理清楚每层回传的数据
