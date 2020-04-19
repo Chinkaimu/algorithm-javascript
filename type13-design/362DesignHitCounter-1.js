@@ -4,10 +4,12 @@ function HitCounter () {
   this.hit = function (timestamp) {
     removeTimeoutHits(this.hits, timestamp, 5);
     this.hits.unshift(timestamp);
+    // 算出坐标，然后 count++
   }
 
   this.getHits = function (timestamp) {
     removeTimeoutHits(this.hits, timestamp, 5);
+    // TODO: 这里会有问题，可能一个点打多次
     return this.hits.length;
   }
 }
