@@ -8,8 +8,10 @@
 
 ## 字符串常用场景
 * 反转：通过 2 个指针，前后交换
+* 判断回文串：使用 DP
 
 
 ## Leetcode 案例
 * [186. Reverse Words In a StringII](https://leetcode.com/problems/reverse-words-in-a-string-ii/)
 * [151. Reverse Words In a String](https://leetcode.com/problems/reverse-words-in-a-string/)
+* [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)

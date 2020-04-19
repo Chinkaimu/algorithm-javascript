@@ -12,6 +12,7 @@ var longestPalindrome = function (s) {
     var l = mid;
     var r = mid;
     
+    // 奇数情况
     while (l >= 0 && r < s.length && s[l] === s[r]) {
         --l;
         ++r;
@@ -20,7 +21,8 @@ var longestPalindrome = function (s) {
         start = l+1;
         len = r-l-1;
     }
-     
+    
+    // 偶数情况
     l = mid;
     r = mid+1;
     while (l >= 0 && r < s.length && s[l] === s[r]) {        
