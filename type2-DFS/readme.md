@@ -1,5 +1,6 @@
 # 深度优先搜索（Depth-First Search）
 * 核心思想：
+  * `构建树`（最核心）
   * 递归一层层往下寻找结果
   * 与 Divide&Conquer 结合(常用于 树)的时候，递归求最底部解回传到上一层节点，再一层层回传。根结果与左右结果分开思路会更加清晰。
   * 用栈进栈出的方式
@@ -28,7 +29,7 @@
 * 查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/131PalindromePartitioning.js)
 * [Combination Sum](https://leetcode.com/problems/combination-sum/)：套用模板即可，不过需要注意 sum 的回溯。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/39CombinationSum.js)
 * [Combination SumII](https://leetcode.com/problems/combination-sum-ii/submissions/): 在3题的基础上增加排序，以及筛选掉重复元素。` i !== pos && candidates[i] === candidates[i - 1]` 时候直接下一个函数。查看[代码](https://github.com/zhihuibaobao/algorithm-javascript/blob/master/class7-graph-search/40CombinationSumII.js)
-
+* [200. Number of Islands](https://leetcode.com/problems/number-of-islands/)：向外扩展领地的 DFS，关键点是要构建树。
 
 ### 与分治法结合
 * [112. Path Sum](https://leetcode.com/problems/path-sum/) 结果由左右子树结果得出。
