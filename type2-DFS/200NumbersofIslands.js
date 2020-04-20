@@ -8,7 +8,7 @@
  * result: num
  * 
  * coding: 21:57 - 20:04（7）
- * debuging: 20:04 - 10:20（16）
+ * debugging: 20:04 - 10:20（16）
  * @param {character[][]} grid
  * @return {number}
  */
