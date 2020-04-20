@@ -4,6 +4,7 @@
  * @return {number}
  */
 var dayOfYear = function(date) {
+  // TODO: 待优化，这里直接使用月份占年份中的天数
   const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
   const dates = date.split('-');
