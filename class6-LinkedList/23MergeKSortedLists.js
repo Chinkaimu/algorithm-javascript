@@ -50,33 +50,3 @@ var mergeKLists = function(lists) {
   return dummy.next
 };
 
-
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
-
-function creationList (array) {
-  const head = new ListNode(array[0])
-  let node = head
-
-  for (let i = 1; i < array.length; i++) {
-    node.next = new ListNode(array[i])
-    node = node.next
-  }
-
-  return head
-}
-
-function transferListToArray (head) {
-  const array = []
-  while (head) {
-    array.push(head.val)
-    head = head.next
-  }
-
-  return array
-}
-
-console.log(transferListToArray(mergeKLists([creationList([1,4,5]), creationList([1,3,4])])))
-
