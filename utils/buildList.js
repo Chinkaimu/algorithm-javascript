@@ -1,4 +1,4 @@
-function buildList (arr) {
+function buildList (arr, pos) {
   if (!Array.isArray(arr)) {
     throw new Error('arr is not an array!')
   }
@@ -6,11 +6,20 @@ function buildList (arr) {
 
   const dummyNode = new ListNode();
   let preNode = dummyNode;
+  let circleNode = null;
 
-  arr.forEach(item => {
-    preNode.next = new ListNode(item);
+  arr.forEach((item, index) => {
+    const node = new ListNode(item);
+    if (pos >= 0 && pos < arr.length && index === pos) {
+      circleNode = node;
+    }
+    preNode.next = node;
     preNode = preNode.next;
   })
+
+  if (circleNode) {
+    preNode.next = circleNode;
+  }
 
   return dummyNode.next;
 }
