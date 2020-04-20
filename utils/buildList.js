@@ -1,4 +1,7 @@
 function buildList (arr) {
+  if (!Array.isArray(arr)) {
+    throw new Error('arr is not an array!')
+  }
   if (!arr || !arr.length) return null;
 
   const dummyNode = new ListNode();

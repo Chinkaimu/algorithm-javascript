@@ -17,6 +17,38 @@
  * @return {ListNode}
  */
 var detectCycle = function(head) {
+  let faster = head;
+  let slower = head;
+  let isCircle = false;
+  
+  // 结束循环条件：
+  /**
+   * faster === null || faster.next === null 跳出循环； 存在环退出循环
+   * （faster === null || slower === null 直接返回 null，可以被归纳到上一种跳出循环，直接到最后判断无环则直接返回。这样也可以跟 141 更好的对应起来。) 效率提高到了超越 98%
+   */
+  while (faster && faster.next) {
+      faster = faster.next.next;
+      slower = slower.next;
+      
+      if (faster === slower) {
+          isCircle = true;
+          break;
+      }
+  }
+  
+  if (isCircle) {
+    while (faster !== head) {
+      faster = faster.next;
+      head = head.next;
+    }
+    return head;
+  }
+
+  return null;
+}
+
+
+var detectCycle = function(head) {
   if (!head || !head.next) return null;
 
   let fp = head;
