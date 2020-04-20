@@ -1,5 +1,5 @@
 /**
- * 11:02 - 
+ * 11:02 - 12:55 (1h)
  * design+coding: 11:02 - 11:18(16)
  * TODO: 输入的 month 是 1 - 12 不要与 Date.getMonth() 搞混淆
  * day 1- 31; month 1 - 12; year: 1971 - 2100
