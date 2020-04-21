@@ -19,6 +19,7 @@ var BSTIterator = function(root) {
     }
   }
 
+  // 把 root 先入栈
   this._inOrderLeftTraversal(root)
 };
 
