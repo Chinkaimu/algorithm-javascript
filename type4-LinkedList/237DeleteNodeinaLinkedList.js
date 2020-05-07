@@ -15,10 +15,3 @@ var deleteNode = function(node) {
   node.val = node.next.val;
   node.next = node.next.next;
 };
-
-/**
- * Test Case (已知至少 2 个节点)
- * 1. 删除第一个节点（增加 dummyNode 辅助，记得要断开 dummyNode）
- * 2. 删除最后一个节点（不存在）
- * 3. 删除中间节点
- */
