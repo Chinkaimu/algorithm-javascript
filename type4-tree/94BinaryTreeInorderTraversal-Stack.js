@@ -42,3 +42,25 @@ var inorderTraversal = function(root) {
 
   return result;
 };
+
+function inOrderTranversal(root) {
+  if (!root) return [];
+
+  const stack = [root];
+  const result = [];
+
+  while (stack.length > 0) {
+    while (stack[stack.length - 1].left !== null) {
+      const currentNode = stack[stack.length - 1];
+      stack.push(currentNode.left);
+      currentNode.left = null;
+    }
+
+    const node = stack.pop();
+    result.push(node.val);
+
+    node.right && stack.push(node.right);
+  }
+
+  return result;
+}
