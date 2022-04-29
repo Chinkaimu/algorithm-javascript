@@ -5,8 +5,6 @@
  * 
  */
 
-
-
 /**
  * Traverse from left to right.
  * 
@@ -56,7 +54,7 @@ var isPair = function (a, b) {
        return true;
    }
 
-   if (a === "C" && (b === "D") || b === "M") {
+   if (a === "C" && (b === "D" || b === "M")) {
        return true;
    }
 
