@@ -12,7 +12,7 @@
     }
 
     let totalJumbo = tomatoSlices / 2 - cheeseSlices;
-    let totalSmall = cheeseSlices - tomatoSlices;
+    let totalSmall = cheeseSlices - totalJumbo;
 
     if (totalJumbo < 0 || totalSmall < 0) {
         return [];
