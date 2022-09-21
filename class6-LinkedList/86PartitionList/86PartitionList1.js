@@ -10,31 +10,7 @@
  * @param {number} x
  * @return {ListNode}
  */
-
- // 使用 left \right 2个 dummyNode 可以简化程序
 var partition = function(head, x) {
-  const dummyLeft = new ListNode(0)
-  let left = dummyLeft
-  const dummyRight = new ListNode(0)
-  let right = dummyRight
-
-  while (head) {
-    if (head.val < x) {
-      left.next = head
-      left = head
-    } else {
-      right.next = head
-      right = head
-    }
-    head = head.next
-  }
-
-  right.next = null
-  left.next = dummyRight.next
-  return dummyLeft.next
-};
-
-var partition1 = function(head, x) {
   let dummyHead = new ListNode(0)
   dummyHead.next = head
   let node = dummyHead
@@ -49,8 +25,11 @@ var partition1 = function(head, x) {
       continue
     } 
     if (pre && node.next.val < x) {
+      // To be linked back after insert.
       temp = pre.next
+      // Insert after pre node.
       pre.next = node.next
+      // Detech the original link of node.
       node.next = pre.next.next
       pre.next.next = temp
       pre = pre.next
